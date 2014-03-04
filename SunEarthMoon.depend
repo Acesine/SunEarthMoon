@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1393918751 source:/home/xianggao/Desktop/OpenGL/SunEarthMoon/imageloader.cpp
+	<assert.h>
+	<fstream>
+	"imageloader.h"
+
+1393918762 /home/xianggao/Desktop/OpenGL/SunEarthMoon/imageloader.h
+
+1393922837 source:/home/xianggao/Desktop/OpenGL/SunEarthMoon/main.cpp
+	<GL/glut.h>
+	<GL/gl.h>
+	<math.h>
+	"imageloader.h"
+

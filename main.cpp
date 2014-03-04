@@ -46,6 +46,7 @@ private:
     void drawSun()
     {
         glPushMatrix();
+        glEnable(GL_LIGHT1);
         glEnable(GL_TEXTURE_2D);
         glBindTexture(GL_TEXTURE_2D,sunTextureId);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -54,6 +55,7 @@ private:
         gluQuadricTexture(quad,GLU_TRUE);
         gluSphere(quad,Size,30,30);
         glDisable(GL_TEXTURE_2D);
+        glDisable(GL_LIGHT1);
         glPopMatrix();
     }
 
@@ -202,6 +204,10 @@ void init()
     moonTextureId = loadTexture(image);
     delete image;
 
+    glEnable(GL_NORMALIZE);
+
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
 }
 
 void display()
@@ -220,7 +226,19 @@ void display()
 
 void makeEnvironment()
 {
+    GLfloat ambient[4] = {0.2,0.2,0.2,1};
+    GLfloat diffuse[4] = {1,1,1,1};
+    GLfloat position[4] = {0,0,0,1}; //positional light
+    glLightfv(GL_LIGHT0,GL_AMBIENT,ambient);
+    glLightfv(GL_LIGHT0,GL_DIFFUSE,diffuse);
+    glLightfv(GL_LIGHT0,GL_POSITION,position);
 
+    GLfloat ambient1[4] = {5,5,5,1};
+    GLfloat diffuse1[4] = {1,1,1,1};
+    GLfloat position1[4] = {0,0,0,1}; //positional light
+    glLightfv(GL_LIGHT1,GL_AMBIENT,ambient1);
+    glLightfv(GL_LIGHT1,GL_DIFFUSE,diffuse1);
+    glLightfv(GL_LIGHT1,GL_POSITION,position1);
 }
 
 void makeCamera()
